@@ -6,9 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `REACT_APP_API_ENDPOINT=<app-server-host:port> npm start`
+### Runs the app in the development mode.
 
-Runs the app in the development mode.\
+`REACT_APP_API_ENDPOINT=<app-server-host:port> npm start`
+
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
@@ -23,10 +24,11 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 
 1. Install docker https://docs.docker.com/get-docker/
 2. Add `ENV REACT_APP_API_ENDPOINT=http://localhost:<local-port-of-server>` in your dockerfile
-2. Build Docker image from the application root, by running below command `docker build -t <image-name> .`
-3. Run your image using below:
+2. Build Docker image from the application root: 
+   `docker build -t <image-name> .`
+3. Run your image using below command:
    `docker run -dp <local-port>:<application-port> <image-name>`
-4. To check that your application is running enter url `http://localhost:<exposed-port>`
+4. To check that your application is running, enter url `http://localhost:<exposed-port>`
 
 #### How to start the Task Manager UI on Oracle Cloud
 1. Install kubectl cli
