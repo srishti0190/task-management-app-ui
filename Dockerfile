@@ -13,6 +13,9 @@ COPY package-lock.json ./
 RUN npm install --silent
 # RUN npm install react-scripts@3.4.1 -g --silent
 
+# Uncomment and give your application server host:port to run on local
+# REACT_APP_API_ENDPOINT=http://localhost:8080
+
 # add app
 COPY . ./
 
