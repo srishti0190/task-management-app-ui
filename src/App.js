@@ -11,8 +11,7 @@ import TaskEdit from "./components/TaskEdit";
 function App() {
   const [tasks, setTasks] = useState([]);
 
-  const REACT_APP_API_ENDPOINT = "http://localhost:8080"
-  console.log("App Started")
+  const REACT_APP_API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT
 
   useEffect(() => {
     const fetchData = async () => {

@@ -6,7 +6,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `REACT_APP_API_ENDPOINT=<app-server-host:port> npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -18,6 +18,31 @@ You will also see any lint errors in the console.
 
 Launches the test runner in the interactive watch mode.\
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### How to start the Task Manager UI on Local Docker Environment
+
+1. Install docker https://docs.docker.com/get-docker/
+2. Add `ENV REACT_APP_API_ENDPOINT=http://localhost:<local-port-of-server>` in your dockerfile
+2. Build Docker image from the application root, by running below command `docker build -t <image-name> .`
+3. Run your image using below:
+   `docker run -dp <local-port>:<application-port> <image-name>`
+4. To check that your application is running enter url `http://localhost:<exposed-port>`
+
+#### How to start the Task Manager UI on Oracle Cloud
+1. Install kubectl cli
+2. Point to the correct cluster, set your KUBECONFIG env variable to the kubeconfig file provided in the project root.
+3. Run below kubectl commands from project root to deploy the application on the above mentioned kubernetes cluster.
+    - `kubectl create -f deployment-task-manager-ui.yaml`
+    - `kubectl create -f service-task-manager-ui.yaml`
+    - `kubectl create -f secret-task-manager.yaml`
+
+4. The above steps will create application in default namespace. You may append `-n <namespace>` in the command if you wish to deploy in some other namespace.
+5. Once the Application is deployed, you will see your application exposed through an External IP by the k8s Load Balancer. Currently the application is exposed on port 8080. We can enhance it further by enabling SSL.
+   To get the external IP of the application by running following command.
+   `kubectl get svc`
+
+##### NOTE: One instance of this application is already running on oracle cloud. You may access it using this URL
+http://146.56.54.28:8080/
 
 ### `npm run build`
 
